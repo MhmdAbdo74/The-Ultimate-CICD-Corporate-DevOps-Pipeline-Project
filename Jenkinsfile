@@ -5,6 +5,12 @@ pipeline {
         jdk 'jdk17'
     
     }
+    environment {
+      #add sonar-scanner tool 
+        SCANNER_HOME = tool 'sonar-scanner'
+
+    }
+
     stages {
 
         stage ('git checkout'){
@@ -15,19 +21,26 @@ pipeline {
 
 
         }
-        stage('Build') {
+        stage('compile') {
             steps {
-                echo 'Building..'
+                sh 'mvn compile'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage('File System Scan') {
             steps {
-                echo 'Deploying....'
+               sh "trivy fs --format table -o trivy-fs-report.html ."
+            }
+        }
+    }
+    stage ('sonarqube analysis '){
+        steps {
+            withSonarQubeEnv('sonar-server') {
+                sh 'mvn sonar:sonar'
             }
         }
     }
