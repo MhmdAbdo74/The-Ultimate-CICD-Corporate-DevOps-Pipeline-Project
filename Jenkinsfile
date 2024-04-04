@@ -36,7 +36,7 @@ pipeline {
                sh "trivy fs --format table -o trivy-fs-report.html ."
             }
         }
-    }
+    
     stage('sonarqube analysis'){
         steps {
             withSonarQubeEnv('sonar-server') {
@@ -44,4 +44,5 @@ pipeline {
             }
         }
     }
+}
 }
