@@ -6,6 +6,15 @@ pipeline {
     
     }
     stages {
+
+        stage ('git checkout'){
+            steps {
+                git branch: 'main', url: 'https://github.com/MhmdAbdo74/The-Ultimate-CICD-Corporate-DevOps-Pipeline-Project.git'
+            }
+
+
+
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
