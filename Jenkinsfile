@@ -6,7 +6,7 @@ pipeline {
     
     }
     environment {
-      #add sonar-scanner tool 
+      //add sonar-scanner tool 
         SCANNER_HOME = tool 'sonar-scanner'
 
     }
