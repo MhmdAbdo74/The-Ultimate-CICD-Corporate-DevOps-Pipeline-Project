@@ -34,7 +34,7 @@ pipeline {
             }
         }
     
-    ststage('SonarQube Analsyis') {
+    stage('SonarQube Analsyis') {
  steps {
  withSonarQubeEnv('sona-server') {
  sh ''' $SCANNER_HOME/bin/sonar-scanner -
