@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
       //add sonar-scanner tool 
-        SCANNER_HOME = tool 'sonar-scanner'
+        scannerHome = tool 'sonar-scanner'
 
     }
 
@@ -37,7 +37,7 @@ pipeline {
     stage('SonarQube Analsyis') {
  steps {
  withSonarQubeEnv('sonar-server') {
- sh ''' ${SCANNER_HOME}/bin/sonar-scanner -
+ sh ''' ${scannerHome}/bin/sonar-scanner -
 Dsonar.projectName=BoardGame -Dsonar.projectKey=BoardGame  -Dsonar.sources=src'''
  }
  }
