@@ -37,7 +37,7 @@ pipeline {
             }
         }
     }
-    stage ('sonarqube analysis'){
+    stage('sonarqube analysis'){
         steps {
             withSonarQubeEnv('sonar-server') {
                 sh 'mvn sonar:sonar'
