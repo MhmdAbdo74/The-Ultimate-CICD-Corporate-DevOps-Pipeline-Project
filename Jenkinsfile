@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
       //add sonar-scanner tool 
-        scannerHome = tool 'sonar-scanner'
+        SCANNER_HOME= tool 'sonar-scanner'
 
     }
 
@@ -41,18 +41,13 @@ pipeline {
             }
         }
     
-    stage('SonarQube Analsyis') {
+stage('SonarQube Analsyis') {
  steps {
-     withSonarQubeEnv('sonar-server') {
-               sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=BoardGame \
-                   -Dsonar.projectName=BoardGame \
-                   -Dsonar.projectVersion=1.0 \
-                   -Dsonar.sources=src/ \
-                   -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
-                   -Dsonar.junit.reportsPath=target/surefire-reports/ \
-                   -Dsonar.jacoco.reportsPath=target/jacoco.exec \
-                   -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
-            }
+ withSonarQubeEnv('sonar-server') {
+ sh ''' $SCANNER_HOME/bin/sonar-scanner -
+Dsonar.projectName=BoardGame -Dsonar.projectKey=BoardGame \
+ -Dsonar.java.binaries=. '''
+ }
  }
  }
 }
