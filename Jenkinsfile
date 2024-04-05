@@ -39,9 +39,16 @@ pipeline {
                     sh "$SCANNER_HOME/bin/sonar-scanner  \
                         -Dsonar.projectName=BoardGame \
                         -Dsonar.projectKey=BoardGame \
-                        -Dsonar.java.binaries=."
+                        -Dsonar.java.binaries=src/"
                 }
             }
         }
+        stage ('quality gate') {
+            
+            script {
+
+            }
+            }
+        }
     }
-}
+
