@@ -61,6 +61,18 @@ pipeline {
             }
            
         }
+        
+        stage('publish to nexus ')
+        {
+            steps {
+                sh 'mvn   deploy'
+
+            }
+        }
+
+
+
+
     }
 
 }
