@@ -66,7 +66,7 @@ pipeline {
         {
             steps {
                withMaven(globalMavenSettingsConfig: 'nexus-setting', jdk: 'jdk17',
-               maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
+               maven: 'mvn', mavenSettingsConfig: '', traceability: true) {
               sh "mvn deploy"
 
             }
