@@ -123,3 +123,6 @@ sh "kubectl get svc -n web-apps"
 }
 
 }
+    
+    }
+}
