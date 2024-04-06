@@ -87,8 +87,7 @@ pipeline {
  }
   stage('Docker Image Scan') {
 steps {
-sh "trivy image --format table -o trivy-image-report.html
- mohamed222/boardgame:latest"
+sh "trivy image --format table -o trivy-image-report.html mohamed222/boardgame:latest"
 }
 }
 stage('Push Docker Image') {
