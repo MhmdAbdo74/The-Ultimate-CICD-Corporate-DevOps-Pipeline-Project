@@ -99,15 +99,7 @@ sh "docker push mohamed222/boardgame:latest"
 }
 }
 }
-stage('Push Docker Image') {
-steps {
-script {
-withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-sh "docker push mohamed222/boardgame:latest"
-}
-}
-}
-}
+
 
 
 
