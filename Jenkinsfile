@@ -89,7 +89,8 @@ pipeline {
 
     steps{
         
-        sh 'kubectl get nodes'
+        sh 'export KUBECONFIG=.kube/config \
+        kubectl get nodes'
     }
  }
 
