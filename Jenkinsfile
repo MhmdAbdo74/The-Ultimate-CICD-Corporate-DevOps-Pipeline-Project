@@ -108,6 +108,7 @@ serverUrl: 'https://10.0.1.181:6443') {
 sh "kubectl apply -f deployment-service.yaml"
 }
 }
+   }
 stage('Verify the Deployment') {
 steps {
 withKubeConfig(caCertificate: '', clusterName: 'fghfh', contextName: '',
@@ -122,7 +123,7 @@ sh "kubectl get svc -n web-apps"
 
 }
 
-}
+
     
     }
 }
