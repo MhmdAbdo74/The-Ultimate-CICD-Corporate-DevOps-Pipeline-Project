@@ -103,7 +103,7 @@ sh "docker push mohamed222/boardgame:latest"
    stage('Deploy To Kubernetes') {
 steps {
 withKubeConfig(caCertificate: '', clusterName: 'fghfh', contextName: '',
-credentialsId: 'k8-cred', namespace: 'web-apps', restrictKubeConfigAccess: false,
+credentialsId: 'k8s-cred', namespace: 'web-apps', restrictKubeConfigAccess: false,
 serverUrl: 'https://10.0.1.181:6443') {
 sh "kubectl apply -f deployment-service.yaml"
 }
@@ -112,7 +112,7 @@ sh "kubectl apply -f deployment-service.yaml"
 stage('Verify the Deployment') {
 steps {
 withKubeConfig(caCertificate: '', clusterName: 'fghfh', contextName: '',
-credentialsId: 'k8-cred', namespace: 'web-apps', restrictKubeConfigAccess: false,
+credentialsId: 'k8s-cred', namespace: 'web-apps', restrictKubeConfigAccess: false,
 serverUrl: 'https://10.0.1.181:6443') {
 sh "kubectl get pods -n web-apps"
 sh "kubectl get svc -n web-apps"
