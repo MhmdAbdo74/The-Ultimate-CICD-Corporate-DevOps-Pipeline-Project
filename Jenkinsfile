@@ -85,14 +85,23 @@ pipeline {
  }
  }
  }
- stage      ('test'){
+  stage('Docker Image Scan') {
+steps {
+sh "trivy image --format table -o trivy-image-report.html
+ mohamed222/boardgame:latest "
+}
+}
+stage('Push Docker Image') {
+steps {
+script {
+withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+sh "docker push mohamed222/boardgame:latest"
+}
+}
+}
+}
 
-    steps{
-        
-        sh 'export KUBECONFIG=.kube/config \
-        kubectl get nodes'
-    }
- }
+
 
 }
 
