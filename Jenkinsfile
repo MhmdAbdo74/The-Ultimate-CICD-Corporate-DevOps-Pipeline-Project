@@ -153,8 +153,7 @@ output</a>.</p>
 </html>
 """
 emailext (
-subject: "${jobName} - Build ${buildNumber} -
-${pipelineStatus.toUpperCase()}",
+subject: "${jobName} - Build ${buildNumber} - ${pipelineStatus.toUpperCase()}",
 body: body,
 to: 'mohamed202116370@gmail.com',
 from: 'jenkins@example.com',
