@@ -35,5 +35,3 @@ spec:
       port: 8090
       targetPort: 8080
   type: LoadBalancer
-  nodeSelector: # Node selector for the Service
-    my-node-selector: enabled
