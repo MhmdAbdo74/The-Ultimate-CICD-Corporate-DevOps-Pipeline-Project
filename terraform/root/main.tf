@@ -28,3 +28,14 @@ module "K8S-EC2" {
   instance_count = var.instance_count
   vpc_id = module.vpc.vpc_id
 }
+
+module "Monitoring" {
+  source = "../modules/Monitoring"
+  ami = var.ami
+  type = var.type
+  KEY_NAME = module.key.KEY_NAME
+  subnet_id = module.vpc.pub_sub_1a_id
+  instance_count = 1
+  vpc_id = module.vpc.vpc_id
+  sg-id = [module.K8S-EC2.SG-ID]
+}
