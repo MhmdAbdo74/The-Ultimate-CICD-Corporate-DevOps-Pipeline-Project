@@ -10,4 +10,8 @@ WORKDIR $APP_HOME
 
 CMD ["java", "-jar", "app.jar"]
 
+<<<<<<< HEAD
 
+=======
+#hellp
+>>>>>>> bb8f2d4... comment
